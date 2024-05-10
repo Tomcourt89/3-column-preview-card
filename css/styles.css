@@ -1,0 +1,135 @@
+:root {
+    --white: hsla(0, 0%, 100%, 0.75);
+    --grey: hsl(0 0% 95%);
+    --orange: hsl(31 77% 52%);
+    --cyan: hsl(184 100% 22%);
+    --dark-cyan: hsl(179 100% 13%);
+
+    --font-header: "Big Shoulders Display", sans-serif;
+    --font-body: "Lexend Deca", sans-serif;
+
+    --text-base: 0.9375rem;
+    --text-lg: 2.5rem;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 99% 1fr;
+    place-items: center;
+    font-family: var(--font-body);
+    background: var(--grey);
+
+    @media (width >= 40em) {
+        /* This is just for demo purposes */
+        grid-template-rows: 90% 1fr;
+        height: 100vh;
+    }
+}
+
+article {
+    display: grid;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 24px;
+    max-width: 920px;
+    color: var(--white);
+
+    @media (width >= 40em) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+section {
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    flex-grow: 1;
+
+    h2 {
+        text-transform: uppercase;
+        color: var(--grey);
+        font-family: var(--font-header);
+        font-size: var(--text-lg);
+        font-weight: 700;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    p {
+        line-height: 1.6;
+    }
+
+    &.sedan {
+        background: var(--orange);
+
+        h2::before {
+            content: url(../images/icon-sedans.svg);
+        }
+
+        .btn {
+            color: var(--orange);
+        }
+    }
+    
+    &.suv{
+        background: var(--cyan);
+
+        h2::before {
+            content: url(../images/icon-suvs.svg);
+        }
+
+        .btn {
+            color: var(--cyan);
+        }
+    }
+    
+    &.luxury {
+        background: var(--dark-cyan);
+
+        h2::before {
+            content: url(../images/icon-luxury.svg);
+        }
+
+        .btn {
+            color: var(--dark-cyan);
+        }
+    }
+
+    .btn {
+        background: var(--grey);
+        width: min-content;
+        text-wrap: nowrap;
+        padding: 11px 31px;
+        border-radius: 25px;
+        text-decoration: none;
+        border: 2px solid var(--grey);
+        transition: background ease 0.5s, color ease 0.5s;
+
+        &:hover,
+        &:focus {
+            background: transparent;
+            color: var(--grey);
+        }
+    }
+
+    @media (width >= 40em) {
+        h2 {
+            gap: 35px;
+        }
+
+        .btn {
+            margin-top: 50px;
+        }
+    }
+}
+
